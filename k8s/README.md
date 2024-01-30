@@ -25,6 +25,36 @@ kubernetes        ClusterIP      10.0.0.1       <none>          443/TCP        2
 web-app-service   LoadBalancer   10.0.185.191   4.157.117.232   80:30264/TCP   9s    app=web-app
 ```
 #### Look for the EXTERNAL-IP field. Once it's assigned, open a web browser and navigate to the external IP address. You should see the default Nginx welcome page.
+### Scale the web application
+#### Increase the value of replicas to 3 and the re apply.
+> kubectl apply -f .\my-web-app.yaml
+```
+deployment.apps/web-app configured
+```
+### Verify Scaling
+> kubectl get deployment web-app
+```
+NAME      READY   UP-TO-DATE   AVAILABLE   AGE
+web-app   3/3     3            3           32m
+```
+#### Look for the "DESIRED," "CURRENT," and "UP-TO-DATE" values. They should all be equal to the number of replicas (3 in this example). Also, check the "AVAILABLE" value to ensure all replicas are ready.
+### Test the Scaling
+#### To further verify that the replicas are working fine, you can describe the pods and check their status:
+>   kubectl describe pods | Select-String "^Name"
+```
+Name:             web-app-868995d7cf-5jqwq
+Namespace:        default
+Name:             web-app-868995d7cf-m29kj
+Namespace:        default
+Name:             web-app-868995d7cf-mmn7x
+Namespace:        default
+```
+#### This will filter the output to lines starting with "Name." If you want to display the entire line, you can use:
+> kubectl describe pod <pod-name>
+### Access the Web Application:
+#### If you've scaled successfully, your web application should still be accessible using the external IP address obtained from the service. If you've lost the external IP, you can retrieve it again:
+> kubectl get services -o wide
+
 
 
 
