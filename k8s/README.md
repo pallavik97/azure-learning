@@ -24,7 +24,7 @@ NAME              TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)        A
 kubernetes        ClusterIP      10.0.0.1       <none>          443/TCP        29m   <none>
 web-app-service   LoadBalancer   10.0.185.191   4.157.117.232   80:30264/TCP   9s    app=web-app
 ```
-
+#### Look for the EXTERNAL-IP field. Once it's assigned, open a web browser and navigate to the external IP address. You should see the default Nginx welcome page.
 
 
 
