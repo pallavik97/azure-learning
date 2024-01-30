@@ -5,34 +5,8 @@
 #### Make sure you have your Azure credentials available. You can set them using the Azure CLI:
 > az login
 ### Step 3: Create a Terraform Configuration File
-#### Create a new file, for example, main.tf, to define your Terraform configuration. Add the following content:
-```
-provider "azurerm" {
-  features = {}
-}
+#### Create a new file, for example, main.tf, to define your Terraform configuration. Add the main.tf content:
 
-resource "azurerm_resource_group" "aks" {
-  name     = "YourResourceGroupName"
-  location = "YourRegion"
-}
-
-resource "azurerm_kubernetes_cluster" "aks" {
-  name                = "YourAKSClusterName"
-  resource_group_name = azurerm_resource_group.aks.name
-  location            = azurerm_resource_group.aks.location
-  dns_prefix          = "YourDNSPrefix"
-
-  default_node_pool {
-    name       = "default"
-    node_count = 1
-    vm_size    = "Standard_DS2_v2"
-  }
-
-  tags = {
-    Environment = "Production"
-  }
-}
-```
 ### Step 4: Customize Terraform Configuration
 #### Replace the placeholder values such as YourResourceGroupName, YourAKSClusterName, YourDNSPrefix, YourServicePrincipalClientId, and YourServicePrincipalClientSecret with your own values.
 ### Step 5: Initialize and Apply Terraform Configuration
