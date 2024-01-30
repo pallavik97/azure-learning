@@ -1,6 +1,6 @@
 # Hands-On Project: Deploying a Simple Web App on AKS
 ### Step 1: Create a Kubernetes Deployment YAML
-#### Create a file named web-app-deployment.yaml with my-web-app.yaml content. This YAML defines a simple Kubernetes Deployment for an Nginx web server with 2 replicas.
+#### Create a file named my-web-app.yaml with my-web-app.yaml content. This YAML defines a simple Kubernetes Deployment for an Nginx web server with 2 replicas.
 ### Step 2: Apply the Deployment
 #### Apply the deployment to your AKS cluster:
 > kubectl apply -f my-web-app.yaml
